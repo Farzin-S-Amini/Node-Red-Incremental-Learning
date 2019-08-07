@@ -1,0 +1,240 @@
+<script type="text/x-red" data-template-name="OneVsRestClassifier">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-savePath"><i class="icon-tag"></i>Save Path</label>
+        <input type="text" id="node-input-savePath" placeholder="Save Path">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-target"><i class="icon-tag"></i>Target index</label>
+        <input type="text" id="node-input-target" placeholder="y">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-l2"><i class="icon-tag"></i>L2 Regularization</label>
+        <input type="text" id="node-input-l2" placeholder="l2">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-optimizer"><i class="fa fa-book"></i> Optimizer: </label>
+        <select type="text" id="node-input-optimizer" style="display: inline-block; width: 70%;">
+            <option value="AdaBound">AdaBound</option>
+            <option value="AdaDelta">AdaDelta</option>
+            <option value="AdaGrad">AdaGrad</option>
+            <option value="Adam">Adam</option>
+            <option value="FTRLProximal">FTRLProximal</option>
+            <option value="Momentum">Momentum</option>
+            <option value="NesterovMomentum">NesterovMomentum</option>
+            <option value="RMSProp">RMSProp</option>
+            <option value="VanillaSGD">VanillaSGD</option>
+        </select>
+    </div>
+      
+    <div class="form-row">
+            <label for="node-input-lr"><i class="icon-tag"></i>Learning Rate</label>
+            <input type="text" id="node-input-lr" placeholder="0.1">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-AdaBound_lr"><i class="icon-tag"></i>lr</label>
+            <input type="text" id="node-input-AdaBound_lr" placeholder="0.001">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-rho"><i class="icon-tag"></i>rho</label>
+            <input type="text" id="node-input-rho" placeholder="0.9">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-beta_1"><i class="icon-tag"></i>beta_1</label>
+            <input type="text" id="node-input-beta_1" placeholder="0.9">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-beta_2"><i class="icon-tag"></i>beta_2</label>
+            <input type="text" id="node-input-beta_2" placeholder="0.999">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-eps"><i class="icon-tag"></i>eps</label>
+            <input type="text" id="node-input-eps" placeholder="1e-08">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-gamma"><i class="icon-tag"></i>gamma</label>
+            <input type="text" id="node-input-gamma" placeholder="0.001">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-final_lr"><i class="icon-tag"></i>final_lr</label>
+            <input type="text" id="node-input-final_lr" placeholder="0.1">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-alpha"><i class="icon-tag"></i>alpha</label>
+            <input type="text" id="node-input-alpha" placeholder="0.05">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-beta"><i class="icon-tag"></i>beta</label>
+            <input type="text" id="node-input-beta" placeholder="1.0">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-FTRL_l1"><i class="icon-tag"></i>l1</label>
+            <input type="text" id="node-input-FTRL_l1" placeholder="0.0">
+    </div>
+
+    <div class="form-row">
+            <label for="node-input-FTRL_l2"><i class="icon-tag"></i>l2</label>
+            <input type="text" id="node-input-FTRL_l2" placeholder="1.0">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="OneVsRestClassifier">
+    <p>OneVsRest Classifier</p>
+</script>
+
+
+<script type="text/javascript">
+
+function LR() {
+  }
+
+var lr = new LR();
+
+lr.showSelectedFields = function(fields) {
+    for (i = 0; i < fields.length; i++) {
+      $(fields[i]).parent().show();
+    }
+  }
+lr.hideSelectedFields = function(fields) {
+    for (i = 0; i < fields.length; i++) {
+      $(fields[i]).parent().hide();
+    }
+  }
+
+lr.hideEverything = function () {
+    var fields = [];
+    fields.push('#node-input-rho'
+                    + ', #node-input-lr'
+                    + ', #node-input-AdaBound_lr'
+                    + ', #node-input-beta_1'
+                    + ', #node-input-beta_2'
+                    + ', #node-input-eps'
+                    + ', #node-input-gamma'
+                    + ', #node-input-final_lr'
+                    + ', #node-input-rho'
+                    + ', #node-input-alpha'
+                    + ', #node-input-beta'
+                    + ', #node-input-FTRL_l1'
+                    + ', #node-input-FTRL_l2'
+                    );
+    lr.hideSelectedFields(fields);
+  }
+
+lr.processSelectedMethod = function(method){
+    var fields = [];
+    lr.hideEverything();
+    switch (method) {
+      case 'AdaBound':
+        fields.push('#node-input-AdaBound_lr');
+        fields.push('#node-input-beta_1');
+        fields.push('#node-input-beta_2');
+        fields.push('#node-input-eps');
+        fields.push('#node-input-gamma');
+        fields.push('#node-input-final_lr');
+        break;
+      case 'AdaDelta':
+        fields.push('#node-input-rho');
+        fields.push('#node-input-eps');
+        break;
+        // deliberate no break
+      case 'AdaGrad':
+        fields.push('#node-input-lr');
+        fields.push('#node-input-eps');
+        break;
+      case 'Adam':
+        fields.push('#node-input-lr');
+        fields.push('#node-input-beta_1');
+        fields.push('#node-input-beta_2');
+        fields.push('#node-input-eps');
+        break;
+      case 'FTRLProximal':
+        fields.push('#node-input-alpha');
+        fields.push('#node-input-beta');
+        fields.push('#node-input-l1');
+        fields.push('#node-input-FTRL_l1');
+        fields.push('#node-input-FTRL_l2');
+        break;
+      case 'Momentum':
+      case 'NesterovMomentum':
+        fields.push('#node-input-lr');
+        fields.push('#node-input-rho');
+        break;
+      case 'RMSProp':
+        fields.push('#node-input-lr');
+        fields.push('#node-input-rho');
+        fields.push('#node-input-eps');
+        break;
+      case 'VanillaSGD':
+        fields.push('#node-input-lr');
+        break;
+    }
+    lr.showSelectedFields(fields);
+}
+ lr.handlersUI = function () {
+    $('#node-input-optimizer').change(function() {
+        lr.processSelectedMethod($('#node-input-optimizer').val());
+    });
+}
+function lroneditprepare() {
+    lr.hideEverything();
+    lr.handlersUI();
+  }
+
+function lroneditsave(){
+    lr.optimizer_selected = $('#node-input-optimizer').val();
+  }
+(function() {
+    RED.nodes.registerType('OneVsRestClassifier', {
+      category: 'Incremental Learning',
+      defaults: {
+        name: { value: '' },
+        savePath: { value: '' },
+        target: { value: '' },
+        optimizer: { value: 'AdaBound' },
+        l2: { value: '' },
+        lr: { value: '' },
+        AdaBound_lr: { value: '' },
+        rho: { value: '' },
+        beta_1: { value: '' },
+        beta_2: { value: '' },
+        eps: { value: '' },
+        gamma: { value: '' },
+        final_lr: { value: '' },
+        alpha: { value: '' },
+        beta: { value: '' },
+        FTRL_l1: { value: '' },
+        FTRL_l2: { value: '' }
+      },
+      color: 'rgb(150,50,150)',
+      inputs: 1,
+      outputs: 1,
+      paletteLabel: 'OneVsRestClassifier',
+      icon: 'file.png',
+      label: function() {
+        return this.name || 'OneVsRestClassifier';
+      },
+      labelStyle: function() {
+        return this.name ? 'node_label_italic node_label_white' : 'node_label_white';
+      },
+      oneditprepare: lroneditprepare,
+      oneditsave: lroneditsave
+    });
+  })();
+</script>

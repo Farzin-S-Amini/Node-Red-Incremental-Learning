@@ -1,0 +1,57 @@
+<script type="text/javascript">
+    RED.nodes.registerType('KMeans',{
+        category: 'Incremental Learning',
+        color: '#E2D96E',
+        defaults: {
+            name: {value:""},
+            savePath: {value: ""},
+            n_clusters: {value:""},
+            halflife: {value:""},
+            mu: {value:""},
+            sigma: {value:""},
+            randomState: {value: ""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "function.png",
+        label: function() {
+            return this.name||"KMeans";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="KMeans">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-savePath"><i class="icon-tag"></i>Save Path</label>
+        <input type="text" id="node-input-savePath" placeholder="Save Path">
+    </div>
+    <div class="form-row">
+        <label for="node-input-n_clusters"><i class="icon-tag"></i>Number of Clusters</label>
+        <input type="number" id="node-input-n_clusters" placeholder="Number of Clusters">
+    </div>
+    <div class="form-row">
+        <label for="node-input-halflife"><i class="icon-tag"></i>Halflife</label>
+        <input type="number" id="node-input-halflife" placeholder="Halflife">
+    </div>
+    <div class="form-row">
+        <label for="node-input-mu"><i class="icon-tag"></i>Mu</label>
+        <input type="number" id="node-input-mu" placeholder="Mu">
+    </div>
+    <div class="form-row">
+        <label for="node-input-sigma"><i class="icon-tag"></i>Sigma</label>
+        <input type="number" id="node-input-sigma" placeholder="Sigma">
+    </div>
+    <div class="form-row">
+        <label for="node-input-randomState"><i class="icon-tag"></i>Random State</label>
+        <input type="number" id="node-input-randomState" placeholder="randomState">
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="KMeans">
+    <p>KMeans clustering</p>
+</script>

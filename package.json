@@ -1,0 +1,24 @@
+{
+  "name": "node-red-contrib-KMeans",
+  "version": "1.0.0",
+  "description": "Incremental KMeans Clustering",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "node-red" : {
+        "nodes": {
+            "KMeans": "KMeans.js",
+            "KMeansPredict": "KMeans_predict.js",
+            "LogisticRegression": "LogisticRegression.js",
+            "LogisticRegressionPredict":"LogisticRegression_predict.js",
+            "LinearRegression": "LinearRegression.js",
+            "LinearRegressionPredict": "LinearRegression_predict.js",
+            "MNLogisticRegression": "MNLogisticRegression.js",
+            "MNLogisticRegression_predict": "MNLogisticRegression_predict.js",
+            "OneVsRestClassifier": "OneVsRestClassifier.js",
+            "OneVsRestClassifier_predict": "OneVsRestClassifier_predict.js"
+        }
+    },
+  "author": "farzin",
+  "license": "ISC"
+}
