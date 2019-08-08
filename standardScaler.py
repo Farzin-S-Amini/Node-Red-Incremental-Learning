@@ -1,7 +1,10 @@
 import json
 from creme import preprocessing
+import pickle
 
 config = json.loads(input())
+
+savePath = config['savePath']
 target = config['target']
 
 scaler = preprocessing.StandardScaler()
@@ -18,4 +21,5 @@ while True:
 		Xi['y'] = y
 
 	print(Xi)
+	pickle.dump(scaler, open(savePath, 'wb'))
 

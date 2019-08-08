@@ -8,7 +8,8 @@ module.exports = function(RED){
 		//set configurations
 		node.file = __dirname + '/standardScaler.py'
 		node.config = {
-			target: config.target || 'y'
+			target: config.target || 'y',
+			savePath: config.savePath || "StandardScaler.sav"
 		}
 		utils.run(RED, node, config)
 	}
