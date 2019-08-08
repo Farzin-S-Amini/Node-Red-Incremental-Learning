@@ -44,40 +44,22 @@ elif (opt == "VanillaSGD"):
 elif (opt == "NesterovMomentum"):
 	optimizer = optim.NesterovMomentum(lr, rho)
 
- 
 
 while True:
 
 	#wait request
 	data = input()
 
-
-	print(init)
 	if (init == 0):
 		MNlog_reg = linear_model.SoftmaxRegression(optimizer, l2= l2)
 		init = 1
 
-
-
 	Xi = json.loads(data)
 	y = float(Xi.pop(target))
-	# print(y)
-	# print(Xi)
+	print(y)
+	print(Xi)
 
 	model = MNlog_reg.fit_one(Xi, y)
 	pickle.dump(model, open(savePath, 'wb'))
 
-
-	# d = ast.literal_eval(ast.literal_eval(data.strip()))
-	# print(type(d))
-	# print(d)
-	# # print(list(eval(data)))
-	# # print(type(list(eval(data))))
-	# Xi = dict(enumerate(d))
-	# print(Xi)
-	# k_means = cluster.KMeans(n_clusters=n_clusters, halflife=halflife, mu=mu, sigma=sigma, random_state=random_state)
-	# # print(Xi)
-	# k_means.fit_one(Xi)
-
-	# pickle.dump(k_means, open(savePath, 'wb'))
 

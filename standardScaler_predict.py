@@ -12,8 +12,9 @@ while True:
 	data = input()
 
 	Xi = json.loads(data)
-
 	loaded_model = pickle.load(open(savePath, 'rb'))
-	print(Xi)
+	# print(Xi)
 
-	print(loaded_model.predict_one(Xi))
+	print(json.dumps(loaded_model.transform_one(Xi)))
+
+

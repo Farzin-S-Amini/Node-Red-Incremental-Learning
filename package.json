@@ -17,7 +17,8 @@
             "MNLogisticRegression_predict": "MNLogisticRegression_predict.js",
             "OneVsRestClassifier": "OneVsRestClassifier.js",
             "OneVsRestClassifier_predict": "OneVsRestClassifier_predict.js",
-            "StandardScaler": "standardScaler.js"
+            "StandardScaler": "standardScaler.js",
+            "StandardScaler_predict": "standardScaler_predict.js"
         }
     },
   "author": "farzin",
