@@ -17,7 +17,7 @@ while True:
 	y = Xi.pop(target, None)
 	Xi = scaler.fit_one(Xi).transform_one(Xi)
 	if (y != None):
-		Xi["y"] = y
+		Xi[target] = y
 
 	pickle.dump(scaler, open(savePath, 'wb'))
 
