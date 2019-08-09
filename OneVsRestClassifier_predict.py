@@ -19,4 +19,3 @@ while True:
 
 	print(loaded_model.predict_one(Xi))
 
-
