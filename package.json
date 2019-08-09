@@ -19,7 +19,8 @@
             "OneVsRestClassifier_predict": "OneVsRestClassifier_predict.js",
             "StandardScaler": "standardScaler.js",
             "StandardScaler_predict": "standardScaler_predict.js",
-            "DecisionTreeClassifier": "DecisionTreeClassifier.js"
+            "DecisionTreeClassifier": "DecisionTreeClassifier.js",
+            "DecisionTreeClassifier_predict": "DecisionTreeClassifier_predict.js"
         }
     },
   "author": "farzin",
