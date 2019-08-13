@@ -20,7 +20,8 @@
             "StandardScaler": "standardScaler.js",
             "StandardScaler_predict": "standardScaler_predict.js",
             "DecisionTreeClassifier": "DecisionTreeClassifier.js",
-            "DecisionTreeClassifier_predict": "DecisionTreeClassifier_predict.js"
+            "DecisionTreeClassifier_predict": "DecisionTreeClassifier_predict.js",
+            "GaussianNB": "GaussianNB.js"
         }
     },
   "author": "farzin",
