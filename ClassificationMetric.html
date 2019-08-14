@@ -1,0 +1,54 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ClassificationMetric',{
+        category: 'Incremental Learning',
+        color: '#E2D96E',
+        defaults: {
+            name: {value:""},
+            modelPath: { value:""},
+            target: {value:""},
+            metric: {value:""}
+        },
+        color: 'rgb(150,50,150)',
+        labelStyle: function() {
+            return this.name ? 'node_label_italic node_label_white' : 'node_label_white';
+        },
+        inputs:1,
+        outputs:1,
+        icon: "function.png",
+        label: function() {
+            return this.name||"ClassificationMetric";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="ClassificationMetric">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i>Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-modelPath"><i class="icon-tag"></i>Model Path</label>
+        <input type="text" id="node-input-modelPath" placeholder="Model Path">
+    </div>
+    <div class="form-row">
+        <label for="node-input-target"><i class="icon-tag"></i>Target</label>
+        <input type="text" id="node-input-target" placeholder="y">
+    </div>
+    <div class="form-row">
+        <label for="node-input-metric"><i class="fa fa-book"></i> Metric: </label>
+        <select type="text" id="node-input-metric" style="display: inline-block; width: 70%;">
+            <option value="Accuracy">Accuracy</option>
+            <option value="CrossEntropy">CrossEntropy</option>
+            <option value="MacroF1">MacroF1</option>
+            <option value="MacroPrecision">MacroPrecision</option>
+            <option value="MacroRecall">MacroRecall</option>
+            <option value="MicroF1">MicroF1</option>
+            <option value="MicroPrecision">MicroPrecision</option>
+            <option value="MicroRecall">MicroRecall</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ClassificationMetric">
+    <p>Classification Metric</p>
+</script>

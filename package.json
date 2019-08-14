@@ -21,7 +21,9 @@
             "StandardScaler_predict": "standardScaler_predict.js",
             "DecisionTreeClassifier": "DecisionTreeClassifier.js",
             "DecisionTreeClassifier_predict": "DecisionTreeClassifier_predict.js",
-            "GaussianNB": "GaussianNB.js"
+            "GaussianNB": "GaussianNB.js",
+            "GaussianNB_predict": "GaussianNB_predict.js",
+            "ClassificationMetric": "ClassificationMetric.js"
         }
     },
   "author": "farzin",
