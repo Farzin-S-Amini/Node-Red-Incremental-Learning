@@ -23,7 +23,8 @@
             "DecisionTreeClassifier_predict": "DecisionTreeClassifier_predict.js",
             "GaussianNB": "GaussianNB.js",
             "GaussianNB_predict": "GaussianNB_predict.js",
-            "ClassificationMetric": "ClassificationMetric.js"
+            "ClassificationMetric": "ClassificationMetric.js",
+            "RegressionMetric": "RegressionMetric.js"
         }
     },
   "author": "farzin",
