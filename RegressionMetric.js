@@ -9,7 +9,7 @@ module.exports = function(RED){
 		node.file = __dirname + '/RegressionMetric.py'
 		node.config = {
 			target: config.target || 'y',
-			modelPath: config.modelPath || "LinearRegression.sav",
+			predict: config.predict || 'Predict',
 			metric: config.metric || "MAE"
 		}
 		utils.run(RED, node, config)
