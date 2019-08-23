@@ -9,7 +9,7 @@ module.exports = function(RED){
 		node.file = __dirname + '/ClassificationMetric.py'
 		node.config = {
 			target: config.target || 'y',
-			modelPath: config.modelPath || "DecisionTreeClassifier.sav",
+			predict: config.predict || 'Predict',
 			metric: config.metric || "Accuracy"
 		}
 		utils.run(RED, node, config)

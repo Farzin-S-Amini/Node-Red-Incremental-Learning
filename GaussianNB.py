@@ -10,6 +10,8 @@ target = config['target']
 
 GaussianNB_classifier = naive_bayes.GaussianNB()
 
+output = {}
+
 while True:
 
 	#wait request
@@ -17,8 +19,11 @@ while True:
 
 	Xi = json.loads(data)
 	y = Xi.pop(target, None)
-	print(Xi)
-	print(y)
+
+	output["Predict"] = GaussianNB_classifier.predict_one(Xi)
+	output["Truth"] = y
 	
 	model = GaussianNB_classifier.fit_one(Xi, y)
 	pickle.dump(model, open(savePath, 'wb'))
+
+	print(json.dumps(output))

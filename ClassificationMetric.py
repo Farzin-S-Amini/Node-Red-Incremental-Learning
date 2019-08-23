@@ -5,8 +5,8 @@ import json
 #read configurations
 config = json.loads(input())
 
-modelPath = config['modelPath']
 target = config['target']
+predict = config['predict']
 m = config['metric']
 
 
@@ -34,12 +34,7 @@ while True:
 	data = input()
 
 	Xi = json.loads(data)
-	yt = float(Xi.pop(target))
+	xt = Xi.pop(predict)
+	yt = Xi.pop(target)
 
-	loaded_model = pickle.load(open(modelPath, 'rb'))
-
-	yp = loaded_model.predict_one(Xi)
-	print("GT: ", yt)
-	print("P: ", yp)
-
-	print(metric.update(yt, yp))
+	print(metric.update(yt, xt))

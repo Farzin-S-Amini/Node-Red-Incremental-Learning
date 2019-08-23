@@ -15,6 +15,8 @@ tie_threshold = config['tie_threshold']
 
 DTClassifier = tree.DecisionTreeClassifier('gini', patience, max_depth, min_child_samples, confidence, tie_threshold)
 
+output = {}
+
 while True:
 
 	#wait request
@@ -22,8 +24,11 @@ while True:
 
 	Xi = json.loads(data)
 	y = Xi.pop(target, None)
-	print(Xi)
-	print(y)
+
+	output["Predict"] = DTClassifier.predict_one(Xi)
+	output["Truth"] = y
 	
 	model = DTClassifier.fit_one(Xi, y)
 	pickle.dump(model, open(savePath, 'wb'))
+
+	print(json.dumps(output))
