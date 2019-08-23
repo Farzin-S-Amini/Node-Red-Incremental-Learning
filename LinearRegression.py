@@ -46,7 +46,7 @@ else:
 
 lin_reg = linear_model.LinearRegression(optimizer, l2= l2)
 
-
+output = {}
 
 while True:
 
@@ -55,11 +55,11 @@ while True:
 
 	Xi = json.loads(data)
 	y = float(Xi.pop(target))
-	print(y)
-	print(Xi)
+
+	output["Predict"] = lin_reg.predict_one(Xi)
+	output["Truth"] = y
 
 	model = lin_reg.fit_one(Xi, y)
 	pickle.dump(model, open(savePath, 'wb'))
 
-
-
+	print(json.dumps(output))
