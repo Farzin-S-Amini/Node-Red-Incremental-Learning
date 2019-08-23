@@ -6,7 +6,7 @@ config = json.loads(input())
 
 savePath = config['savePath']
 target = config['target']
-patience = config['patience']
+patience = float(config['patience'])
 max_depth = config['max_depth']
 min_child_samples = config['min_child_samples']
 confidence = config['confidence']

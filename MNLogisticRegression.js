@@ -11,7 +11,7 @@ module.exports = function(RED){
 			savePath: config.savePath || "MNLogisticRegression.sav",
 			target: config.target || "y",
 			l2: Number(config.l2) || 0,
-			optimizer: Number(config.optimizer) || 'AdaBound',
+			optimizer: config.optimizer,
 			lr: Number(config.lr) || 0.1,
 			AdaBound_lr: Number(config.AdaBound_lr) || 0.001,
 			rho: Number(config.rho) || 0.9,

@@ -43,23 +43,26 @@ elif (opt == "VanillaSGD"):
 	optimizer = optim.VanillaSGD(lr)
 elif (opt == "NesterovMomentum"):
 	optimizer = optim.NesterovMomentum(lr, rho)
+else:
+	optimizer = None
 
+log_reg = linear_model.LogisticRegression(optimizer, l2= l2)
+OVRClassifier = multiclass.OneVsRestClassifier(log_reg)
+
+output = {}
 
 while True:
 
 	#wait request
 	data = input()
 
-	if (init == 0):
-		log_reg = linear_model.LogisticRegression(optimizer, l2= l2)
-		OVRClassifier = multiclass.OneVsRestClassifier(log_reg)
-		init = 1
-
 	Xi = json.loads(data)
 	y = float(Xi.pop(target))
-	print(y)
-	print(Xi)
+
+	output["Predict"] = OVRClassifier.predict_one(Xi)
+	output["Truth"] = y
 
 	model = OVRClassifier.fit_one(Xi, y)
 	pickle.dump(model, open(savePath, 'wb'))
 
+	print(json.dumps(output))

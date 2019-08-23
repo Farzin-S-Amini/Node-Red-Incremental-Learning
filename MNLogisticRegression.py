@@ -43,7 +43,10 @@ elif (opt == "VanillaSGD"):
 	optimizer = optim.VanillaSGD(lr)
 elif (opt == "NesterovMomentum"):
 	optimizer = optim.NesterovMomentum(lr, rho)
+else:
+	optimizer = None
 
+output = {}
 
 while True:
 
@@ -55,11 +58,13 @@ while True:
 		init = 1
 
 	Xi = json.loads(data)
-	y = float(Xi.pop(target))
-	print(y)
-	print(Xi)
+	Xi_float = dict((k,float(v)) for k,v in Xi.items())
+	y = float(Xi_float.pop(target))
 
-	model = MNlog_reg.fit_one(Xi, y)
+	output["Predict"] = MNlog_reg.predict_one(Xi_float)
+	output["Truth"] = y
+
+	model = MNlog_reg.fit_one(Xi_float, y)
 	pickle.dump(model, open(savePath, 'wb'))
 
-
+	print(json.dumps(output))
