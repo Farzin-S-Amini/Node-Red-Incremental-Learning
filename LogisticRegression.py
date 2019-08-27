@@ -7,7 +7,6 @@ import ast
 
 #read configurations
 config = json.loads(input())
-init = 0
 
 savePath = config['savePath']
 target = config['target']
@@ -47,16 +46,15 @@ elif (opt == "NesterovMomentum"):
 else:
 	optimizer = None
 
+
+log_reg = linear_model.LogisticRegression(optimizer, l2= l2)
+
 output = {}
 
 while True:
 
 	#wait request
 	data = input()
-
-	if (init == 0):
-		log_reg = linear_model.LogisticRegression(optimizer, l2= l2)
-		init = 1
 
 	Xi = json.loads(data)
 	y = float(Xi.pop(target))

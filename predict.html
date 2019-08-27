@@ -1,22 +1,21 @@
 <script type="text/javascript">
-    RED.nodes.registerType('Evaluate',{
+    RED.nodes.registerType('Predict',{
         category: 'Incremental Learning',
         color: '#E2D96E',
         defaults: {
             name: {value:""},
-            modelPath: { value:""},
-            target: {value:""}
+            modelPath: {value:""}
         },
         inputs:1,
         outputs:1,
         icon: "function.png",
         label: function() {
-            return this.name||"Evaluate";
+            return this.name||"Predict";
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="Evaluate">
+<script type="text/x-red" data-template-name="Predict">
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i>Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
@@ -25,12 +24,10 @@
         <label for="node-input-modelPath"><i class="icon-tag"></i>Model Path</label>
         <input type="text" id="node-input-modelPath" placeholder="Model Path">
     </div>
-    <div class="form-row">
-        <label for="node-input-target"><i class="icon-tag"></i>Target</label>
-        <input type="text" id="node-input-target" placeholder="y">
-    </div>
+
+
 </script>
 
-<script type="text/x-red" data-help-name="Evaluate">
-    <p>Evaluates trained models</p>
+<script type="text/x-red" data-help-name="Predict">
+    <p>Predict Node</p>
 </script>
