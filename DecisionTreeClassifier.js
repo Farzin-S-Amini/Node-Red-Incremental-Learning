@@ -10,11 +10,11 @@ module.exports = function(RED){
 		node.config = {
 			target: config.target || 'y',
 			savePath: config.savePath || "DecisionTreeClassifier.sav",
-			patience: config.patience || 10,
-			max_depth: config.max_depth || 5,
-			min_child_samples: config.min_child_samples || 20,
-			confidence: config.confidence || 1e-05,
-			tie_threshold: config.tie_threshold || 0.05
+			patience: parseInt(config.patience) || 10,
+			max_depth: parseInt(config.max_depth) || 5,
+			min_child_samples: parseInt(config.min_child_samples) || 20,
+			confidence: Number(config.confidence) || 1e-05,
+			tie_threshold: Number(config.tie_threshold) || 0.05
 		}
 		utils.run(RED, node, config)
 	}
