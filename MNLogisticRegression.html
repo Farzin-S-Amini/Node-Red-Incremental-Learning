@@ -225,16 +225,13 @@ function lroneditsave(){
         FTRL_l1: { value: '' },
         FTRL_l2: { value: '' }
       },
-      color: 'rgb(150,50,150)',
+      color: '#d1add9',
       inputs: 1,
       outputs: 1,
-      paletteLabel: 'MNLogisticRegression',
+      paletteLabel: 'MNLogistic Regression',
       icon: 'function.png',
       label: function() {
-        return this.name || 'MNLogisticRegression';
-      },
-      labelStyle: function() {
-        return this.name ? 'node_label_italic node_label_white' : 'node_label_white';
+        return this.name || 'MNLogistic Regression';
       },
       oneditprepare: lroneditprepare,
       oneditsave: lroneditsave
